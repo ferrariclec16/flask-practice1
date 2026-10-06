@@ -10,7 +10,7 @@ todos = []
 def index():
     if request.method == 'POST':
         todo = request.form['todo']
-        todos.append(todo)
+        todos.append({'text': todo, 'done': False})
         return redirect(url_for('index'))
     return render_template('index.html', todos=todos)
 
