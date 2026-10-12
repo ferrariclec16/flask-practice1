@@ -11,8 +11,9 @@
 |---|---|
 | `app.py`, `templates/` | 수업 실습 코드 |
 | `HW1/` | HW1 — 나를 소개하는 미니 사이트 |
-| `todo_app/` | Note 5 수업 실습 — Todo 추가와 삭제 |
+| `todo_app/` | Note 6 수업 실습 — SQLite Todo 추가·조회·완료·삭제 |
 | `HW2/` | HW2 — Todo 앱에 완료 체크 기능 추가 |
+| `HW3/` | HW3 — SQLite Todo 앱에 설명과 수정 기능 추가 |
 | `requirements.txt` | 설치한 패키지 목록 (저장소 맨 위에 하나만) |
 | `venv/` | 가상환경 (GitHub 에 올리지 않음) |
 
@@ -34,3 +35,14 @@ source venv/bin/activate
 cd HW2
 flask --debug run
 ```
+
+HW3도 저장소 맨 위에서 실행합니다.
+
+```bash
+source venv/bin/activate
+pip install -r requirements.txt
+cd HW3
+flask --debug run
+```
+
+HW3의 설명과 실행 화면 캡처 3장은 [HW3/README.md](HW3/README.md)에 있습니다.
