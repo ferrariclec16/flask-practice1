@@ -16,3 +16,4 @@ li {
 a        { color: #333; text-decoration: none; }
 a:hover  { text-decoration: underline; }
 .done { text-decoration: line-through; }
+.note { color: #888; font-size: 0.85rem; }
