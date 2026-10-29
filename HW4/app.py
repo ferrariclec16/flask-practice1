@@ -73,14 +73,14 @@ def create_app(test_config=None):
         "note": fields.String(description="설명", example="2리터짜리로"),
     })
     todo_input = api.model("TodoInput", {
-        "text": fields.String(required=True, min_length=1, max_length=100, example="우유 사기"),
+        "text": fields.String(required=True, example="우유 사기"),
         "done": fields.Boolean(example=False),
-        "note": fields.String(max_length=500, description="설명", example="2리터짜리로"),
+        "note": fields.String(description="설명", example="2리터짜리로"),
     })
     todo_patch = api.model("TodoPatch", {
-        "text": fields.String(min_length=1, max_length=100),
+        "text": fields.String(),
         "done": fields.Boolean,
-        "note": fields.String(max_length=500, description="설명"),
+        "note": fields.String(description="설명"),
     })
 
     def get_or_abort(id):
@@ -142,9 +142,12 @@ def create_app(test_config=None):
         def patch(self, id):
             """보낸 칸만 바꾼다"""
             todo = get_or_abort(id)
-            for key in ("text", "done", "note"):
-                if key in api.payload:
-                    setattr(todo, key, api.payload[key])
+            if "text" in api.payload:
+                todo.text = api.payload["text"]
+            if "done" in api.payload:
+                todo.done = api.payload["done"]
+            if "note" in api.payload:
+                todo.note = api.payload["note"]
             db.session.commit()
             return todo
 
